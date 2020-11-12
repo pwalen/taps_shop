@@ -2,11 +2,13 @@ import unittest
 from selenium import webdriver
 from config.test_settings import TestSettings
 from tests.page_objects import main_page, cart_page, order_page
+from tests.page_objects_homework import order_received_page
+from time import sleep
 
 
 class Tests(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.Chrome('/Users/pawelwalenda/chromedriver')
         self.url = TestSettings.page_url
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -22,6 +24,8 @@ class Tests(unittest.TestCase):
         cart_page.approve_cart(self.driver)
         order_page.proper_fill_all_form_areas(self.driver)
         order_page.submit_order(self.driver)
+    # === My assertion:
+        self.assertTrue(order_received_page.order_received_header_visible(self.driver))
 
 if __name__ == '__main__':
     unittest.main()

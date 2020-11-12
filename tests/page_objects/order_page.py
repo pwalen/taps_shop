@@ -105,5 +105,7 @@ def proper_fill_all_form_areas(driver_instance):
 
 
 def submit_order(driver_instance):
+    # I added the line below; otherwise, I always got the 'Stale Element Reference Exception' error:
+    wait_for_visibility_of_element_by_xpath(driver_instance, place_order_button, time_to_wait=2)
     elem = driver_instance.find_element_by_id(place_order_button)
     elem.click()

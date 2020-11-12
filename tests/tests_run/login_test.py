@@ -6,7 +6,7 @@ from tests.page_objects import main_page, login_page, my_account_page
 
 class Tests(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.Chrome('/Users/pawelwalenda/chromedriver')
         self.url = TestSettings.page_url
         self.driver.get(self.url)
         self.driver.maximize_window()
